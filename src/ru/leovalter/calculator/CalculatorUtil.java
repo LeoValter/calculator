@@ -6,9 +6,9 @@ import ru.leovalter.calculator.exception.RomaNumericException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CalculatorUtil {
+class CalculatorUtil {
 
-    static Map<Integer, String> romans = new HashMap<>();
+    public static final Map<Integer, String> romans = new HashMap<>();
 
     static {
         romans.put(0, "N");
@@ -34,7 +34,7 @@ public class CalculatorUtil {
     }
 
 
-    private static Integer romaToArabic(String roma) {
+    private static Integer romaToArabic(String roma) throws RomaNumericException {
         for (int i = 1; i <= 10; ++i) {
             if (romans.get(i).equals(roma)) {
                 return i;
@@ -79,7 +79,7 @@ public class CalculatorUtil {
         return result;
     }
 
-    private static void checkRange(int number) {
+    private static void checkRange(int number) throws RangeNumberException {
         if (!(number > 0 && number < 11)) {
             throw new RangeNumberException("Valid numbers range from 1 to 10");
         }
